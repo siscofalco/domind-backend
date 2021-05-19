@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Session = require('../models/Session.model');
+const Session = require('../models/DoctorSession.model');
 const Patient = require('../models/Patient.model');
 
 // create Session

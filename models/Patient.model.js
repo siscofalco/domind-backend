@@ -17,7 +17,7 @@ const patientSchema = new Schema({
   activities: [{ type: Schema.Types.ObjectId, ref: 'Activity'}],
   doctor: { type: Schema.Types.ObjectId, ref: 'Doctor', required: true },
   diary: [{ type: Schema.Types.ObjectId, ref: 'Diary' }],
-  sessions: [{ type: Schema.Types.ObjectId, ref: 'Session' }],
+  sessions: [{ type: Schema.Types.ObjectId, ref: 'DoctorSession' }],
 })
 
 const Patient = mongoose.model('Patient', patientSchema);

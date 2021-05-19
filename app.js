@@ -25,7 +25,7 @@ app.use('/api/doctor', doctorRouter);
 app.use('/api/patient', patientRouter);
 app.use('/api/activity', activityRouter);
 app.use('/api/diary', diaryRouter);
-app.use('/api/session', sessionRouter);
+app.use('/api/doctor-session', sessionRouter);
 
 app.use((req, res, next) => {
   // If no previous routes match the request, send back the React app.

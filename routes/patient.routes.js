@@ -3,7 +3,7 @@ const router = express.Router();
 const Patient = require('../models/Patient.model');
 const Doctor = require('../models/Doctor.model');
 const Activity = require('../models/Activity.model');
-const Session = require('../models/Session.model');
+const Session = require('../models/DoctorSession.model');
 const Diary = require('../models/Diary.model');
 
 // edit

@@ -7,5 +7,5 @@ const sessionSchema = new Schema ({
     date: { type: Date, required: true }
 })
 
-const Session = mongoose.model('Session', sessionSchema);
-module.exports = Session;
+const DoctorSession = mongoose.model('DoctorSession', sessionSchema);
+module.exports = DoctorSession;
