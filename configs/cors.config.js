@@ -6,8 +6,8 @@ module.exports = (app) => {
       credentials: true, 
       origin: [
         process.env.PUBLIC_DOMAIN, 
-        'http://your-heroku-app-name.herokuapp.com',
-        'https://your-heroku-app-name.herokuapp.com' 
+        'http://domind.herokuapp.com',
+        'https://domind.herokuapp.com' 
       ]
     })
   )
