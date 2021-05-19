@@ -27,6 +27,11 @@ app.use('/api/activity', activityRouter);
 app.use('/api/diary', diaryRouter);
 app.use('/api/session', sessionRouter);
 
+app.use((req, res, next) => {
+  // If no previous routes match the request, send back the React app.
+  res.sendFile(__dirname + "/public/index.html");
+});
+
 //  Catch 404 and respond with error message
 app.use((req, res, next) => {
   return res.status(404).json({ message: "Not found"});
