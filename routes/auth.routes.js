@@ -5,16 +5,13 @@ const bcrypt = require('bcryptjs');
 const uploader = require('../configs/cloudinary.config');
 const Patient = require('../models/Patient.model');
 const Doctor = require('../models/Doctor.model');
+const transporter = require('../configs/nodemailer.config');
 const bcryptSalt = 10;
 
 // Sign up patient
 
 router.post('/signup-patient', (req, res, next) => {
   const { username, name, password, birthdate, email } = req.body;
-
-  if(password.length < 5){
-    return res.status(400).json({ message: 'Please make the password at least 5 characters long'});
-  }
 
   if(!username || !name || !password || !birthdate || !email){
     return res.status(400).json({ message: 'Please fill all the fields in the form'});
@@ -40,7 +37,15 @@ router.post('/signup-patient', (req, res, next) => {
     .then((newPatient) => {
       Doctor.updateOne({_id: req.session.currentUser._id}, {$addToSet: {patients: newPatient._id}}, {new: true})
         .then(() => {
-          return res.status(200).json(newPatient);
+          transporter.sendMail({
+            from: "Domind <eventruckinfo@gmail.com",
+            to: email,
+            subject: "Welcome to Domind!",
+            html: `<h2>Welcome to Domind, ${username}!</h2><p>This is your password <b>${password}</b></p>`,
+          })
+          .then(() => {
+            return res.status(200).json(newPatient);
+          })
         })
         .catch(error => res.status(500).json(error))
     })
